@@ -72,7 +72,7 @@ var environment   = data.environment;
 // ---- Conditional Debug Logging ----
 function debug(message) {
   if (environment === 'staging') {
-    log('Voyantis: ' + message);
+    log('Voyantis SDK: ' + message);
   }
 }
 
@@ -83,21 +83,21 @@ if (environment === 'staging') {
 } else {
   sdkUrl = 'https://sdk.voyantis.io/' + apiKey + '/vy-cs-sdk.min.js';
 }
-debug('Voyantis: starting load. Env=' + environment + ', URL=' + sdkUrl);
+debug('starting load. Env=' + environment + ', URL=' + sdkUrl);
 // ---- GA identifier helpers (no try/catch) ----
 
-// ---- Voyantis load callbacks ----
+// ---- SDK load callbacks ----
 var onSuccess = function () {
-  debug('Voyantis script loaded successfully');
+  debug('script loaded successfully');
   if (data.gtmOnSuccess) { data.gtmOnSuccess(); }
 };
 
 var onFailure = function () {
-  debug('Failed to load Voyantis script');
+  debug('failed to load script');
   if (data.gtmOnFailure) { data.gtmOnFailure(); }
 };
 
-// ---- Load Voyantis ----
+// ---- Load SDK ----
 injectScript(sdkUrl, onSuccess, onFailure);
 
 

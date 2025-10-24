@@ -12,7 +12,7 @@ ___INFO___
     "displayName": "Voyantis",
     "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
   },
-  "description": "Load Voyantis to send event data from Google Tag Manager to Voyantis for AI-powered customer analytics and predictions.",
+  "description": "The Voyantis Tag enables predictive signal optimization by securely fetching key identifiers from your website or app. These identifiers help Voyantis measure and improve the health of your signals, ensuring accurate matching and stronger performance across ad networks such as Google and Meta.",
   "containerContexts": [
     "WEB"
   ]

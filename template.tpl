@@ -5,14 +5,14 @@ ___INFO___
   "id": "voyantis_sdk",
   "version": 1,
   "securityGroups": [],
-  "displayName": "Voyantis SDK",
+  "displayName": "Voyantis",
   "categories": ["ANALYTICS"],
   "brand": {
     "id": "brand_voyantis_ai",
-    "displayName": "Voyantis AI",
+    "displayName": "Voyantis",
     "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=="
   },
-  "description": "Load Voyantis AI SDK to send event data from Google Tag Manager to Voyantis for AI-powered customer analytics and predictions.",
+  "description": "Load Voyantis to send event data from Google Tag Manager to Voyantis for AI-powered customer analytics and predictions.",
   "containerContexts": [
     "WEB"
   ]
@@ -45,7 +45,7 @@ ___TEMPLATE_PARAMETERS___
     "name": "environment",
     "displayName": "Environment",
     "simpleValueType": true,
-    "help": "Select the environment for your SDK deployment",
+    "help": "Select the environment for your Voyantis deployment",
     "selectItems": [
       {
         "value": "production",
@@ -72,7 +72,7 @@ var environment   = data.environment;
 // ---- Conditional Debug Logging ----
 function debug(message) {
   if (environment === 'staging') {
-    log('Voyantis SDK: ' + message);
+    log('Voyantis: ' + message);
   }
 }
 
@@ -83,21 +83,21 @@ if (environment === 'staging') {
 } else {
   sdkUrl = 'https://sdk.voyantis.io/' + apiKey + '/vy-cs-sdk.min.js';
 }
-debug('Voyantis SDK: starting load. Env=' + environment + ', URL=' + sdkUrl);
+debug('Voyantis: starting load. Env=' + environment + ', URL=' + sdkUrl);
 // ---- GA identifier helpers (no try/catch) ----
 
-// ---- SDK load callbacks ----
+// ---- Voyantis load callbacks ----
 var onSuccess = function () {
-  debug('Voyantis SDK script loaded successfully');
+  debug('Voyantis script loaded successfully');
   if (data.gtmOnSuccess) { data.gtmOnSuccess(); }
 };
 
 var onFailure = function () {
-  debug('Failed to load VoyantisSDK script');
+  debug('Failed to load Voyantis script');
   if (data.gtmOnFailure) { data.gtmOnFailure(); }
 };
 
-// ---- Load SDK ----
+// ---- Load Voyantis ----
 injectScript(sdkUrl, onSuccess, onFailure);
 
 

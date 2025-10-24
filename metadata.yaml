@@ -1,0 +1,5 @@
+homepage: "https://voyantis.ai"
+documentation: "<DOCUMENTATION_URL>"
+versions:
+  - sha: "<FIRST_COMMIT_SHA>"
+    changeNotes: "Initial public release of Voyantis AI GTM Template"

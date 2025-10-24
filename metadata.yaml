@@ -2,4 +2,4 @@ homepage: "https://voyantis.ai"
 documentation: "https://github.com/Voyantis/gtm-voyantis"
 versions:
   - sha: "afa932548eb1d0c0721c0e45fcc3e1b224adc7a5"
-    changeNotes: "Initial public release of Voyantis AI GTM Template"
+    changeNotes: "Initial public release of Voyantis GTM Template"

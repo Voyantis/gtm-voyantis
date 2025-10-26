@@ -4,10 +4,10 @@ Official Google Tag Manager custom template for [Voyantis](https://voyantis.ai) 
 
 ## What This Tag Does
 
-**Voyantis Tag**
+### Voyantis Tag
 The Voyantis Tag enables predictive signal optimization by securely fetching key identifiers from your website or app. These identifiers help Voyantis measure and improve the health of your signals, ensuring accurate matching and stronger performance across ad networks such as Google, Meta, and more.
 
-**About Voyantis**
+### About Voyantis
 Voyantis is a predictive-data platform that helps performance marketers optimize campaigns toward future value (LTV). By connecting customer data with advanced prediction models, Voyantis transforms your signals into smarter bidding and measurement decisions.
 
 ## Setup Steps

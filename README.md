@@ -4,14 +4,8 @@ Official Google Tag Manager custom template for [Voyantis](https://voyantis.ai) 
 
 ## What This Tag Does
 
-The Voyantis GTM template loads Voyantis on your website to:
-
-- **Collect event data** from Google Tag Manager
-- **Send data to Voyantis** internal webhook for AI-powered analysis
-- **Enable predictive models** for customer lifetime value, churn prediction, and more
-- **Integrate seamlessly** with your existing GTM setup
-
 The tag injects the Voyantis script dynamically based on your API key and environment configuration.
+Voyantis script collects and send user behavior events to Voyantis API
 
 ## Setup Steps
 
@@ -25,7 +19,7 @@ The tag injects the Voyantis script dynamically based on your API key and enviro
 ### 2️⃣ Configure API Key
 
 1. Create a new tag using the Voyantis template
-2. Enter your **API Key** (available in your [Voyantis dashboard](https://app.voyantis.ai))
+2. Enter your **API Key** (Should be provided by Voyantis team)
 3. The API key is required and must be valid
 
 ### 3️⃣ Select Environment
@@ -39,16 +33,9 @@ Choose your deployment environment:
 
 ### 4️⃣ Trigger Tag on Events
 
-1. Add a trigger to your tag (e.g., "All Pages" for pageview tracking)
-2. For event tracking, use appropriate triggers (form submissions, button clicks, etc.)
+1. Add a trigger to your tag (e.g., "All Pages")
 3. Save and publish your GTM container
 
-## Configuration Reference
-
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| **API Key** | Text | ✅ Yes | Your Voyantis API key from the dashboard |
-| **Environment** | Dropdown | ✅ Yes | `Production` or `Staging` |
 
 ## Support & Contact
 
@@ -61,15 +48,6 @@ Choose your deployment environment:
 
 This template is licensed under the Apache License 2.0. See [LICENSE](LICENSE) file for details.
 
-## About Voyantis
-
-Voyantis empowers marketing teams with AI-powered predictive analytics to:
-- Predict customer lifetime value (LTV)
-- Identify high-value audiences
-- Optimize ad spend with predictive audiences
-- Reduce churn with early warning signals
-
-Learn more at [voyantis.ai](https://voyantis.ai)
 
 ---
 

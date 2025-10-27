@@ -1,10 +1,13 @@
 ___TERMS_OF_SERVICE___
+
 By creating or modifying this file you agree to Google Tag Manager's Community
 Template Gallery Developer Terms of Service available at
 https://developers.google.com/tag-manager/gallery-tos (or such other URL as
 Google may provide), as modified from time to time.
 
+
 ___INFO___
+
 {
   "type": "TAG",
   "id": "voyantis_sdk",
@@ -25,7 +28,9 @@ ___INFO___
   ]
 }
 
+
 ___TEMPLATE_PARAMETERS___
+
 [
   {
     "type": "TEXT",
@@ -89,7 +94,9 @@ if (environment === 'staging') {
   sdkUrl = 'https://sdk.voyantis.io/' + apiKey + '/vy-cs-sdk.min.js';
 }
 debug('starting load. Env=' + environment + ', URL=' + sdkUrl);
+// ---- GA identifier helpers (no try/catch) ----
 
+// ---- SDK load callbacks ----
 var onSuccess = function () {
   debug('script loaded successfully');
   if (data.gtmOnSuccess) { data.gtmOnSuccess(); }
@@ -100,21 +107,33 @@ var onFailure = function () {
   if (data.gtmOnFailure) { data.gtmOnFailure(); }
 };
 
+// ---- Load SDK ----
 injectScript(sdkUrl, onSuccess, onFailure);
 
+
 ___WEB_PERMISSIONS___
+
 [
   {
     "instance": {
-      "key": { "publicId": "inject_script", "versionId": "1" },
+      "key": {
+        "publicId": "inject_script",
+        "versionId": "1"
+      },
       "param": [
         {
           "key": "urls",
           "value": {
             "type": 2,
             "listItem": [
-              { "type": 1, "string": "https://sdk.voyantis.io/*/vy-cs-sdk.min.js" },
-              { "type": 1, "string": "https://sdk.voyantis.io/staging/*/vy-cs-sdk.min.js" }
+              {
+                "type": 1,
+                "string": "https://sdk.voyantis.io/*/vy-cs-sdk.min.js"
+              },
+              {
+                "type": 1,
+                "string": "https://sdk.voyantis.io/staging/*/vy-cs-sdk.min.js"
+              }
             ]
           }
         }
@@ -124,17 +143,32 @@ ___WEB_PERMISSIONS___
   },
   {
     "instance": {
-      "key": { "publicId": "logging", "versionId": "1" },
+      "key": {
+        "publicId": "logging",
+        "versionId": "1"
+      },
       "param": [
-        { "key": "environments", "value": { "type": 1, "string": "debug" } }
+        {
+          "key": "environments",
+          "value": {
+            "type": 1,
+            "string": "debug"
+          }
+        }
       ]
     },
     "isRequired": true
   }
 ]
 
+
 ___TESTS___
+
 scenarios: []
 
+
 ___NOTES___
+
 No template literals, no try/catch. Adds GA identifier lookup (event → gtag client_id → _ga cookie).
+
+

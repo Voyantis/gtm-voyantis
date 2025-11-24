@@ -43,7 +43,7 @@ Choose your deployment environment:
 ## Support & Contact
 
 - 📧 **Email**: support@voyantis.ai
-- 📖 **Documentation**: [https://voyantis.ai/docs](https://voyantis.ai/docs)
+- 📖 **Documentation**: [https://docsend.com/view/2p8i555ju42sqmfm](https://docsend.com/view/2p8i555ju42sqmfm)
 - 🌐 **Website**: [https://voyantis.ai](https://voyantis.ai)
 - 💬 **Contact**: [https://voyantis.ai/contact](https://voyantis.ai/contact)
 

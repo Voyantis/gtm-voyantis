@@ -1,5 +1,5 @@
 homepage: "https://voyantis.ai"
 documentation: "https://docsend.com/view/2p8i555ju42sqmfm"
 versions:
-  - sha: "afa932548eb1d0c0721c0e45fcc3e1b224adc7a5"
+  - sha: "42724fd5e1a1c3531570a69169bf979e04811115"
     changeNotes: "Initial public release of Voyantis GTM Template"

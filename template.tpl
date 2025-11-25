@@ -1,12 +1,4 @@
-﻿___TERMS_OF_SERVICE___
-
-By creating or modifying this file you agree to Google Tag Manager's Community
-Template Gallery Developer Terms of Service available at
-https://developers.google.com/tag-manager/gallery-tos (or such other URL as
-Google may provide), as modified from time to time.
-
-
-___INFO___
+﻿___INFO___
 
 {
   "type": "TAG",
@@ -28,116 +20,237 @@ ___TEMPLATE_PARAMETERS___
 
 [
   {
-    "type": "SELECT",
-    "name": "tagType",
-    "displayName": "Tag Type",
+    "type": "TEXT",
+    "name": "apiKey",
+    "displayName": "API Key",
     "simpleValueType": true,
-    "help": "Select whether to initialize the SDK or identify a user",
-    "selectItems": [
+    "help": "Enter your Voyantis API key",
+    "valueValidators": [
       {
-        "value": "init",
-        "displayValue": "Init"
+        "type": "NON_EMPTY"
       },
       {
-        "value": "identify",
-        "displayValue": "Identify"
+        "type": "REGEX",
+        "args": [
+          "^[A-Za-z0-9_-]+$"
+        ]
       }
-    ],
-    "defaultValue": "init"
+    ]
   },
   {
-    "type": "GROUP",
-    "name": "initGroup",
-    "displayName": "Init Configuration",
-    "subParams": [
+    "type": "SELECT",
+    "name": "environment",
+    "displayName": "Environment",
+    "simpleValueType": true,
+    "help": "Select the environment for your SDK deployment",
+    "selectItems": [
       {
-        "type": "TEXT",
-        "name": "apiKey",
-        "displayName": "API Key",
-        "simpleValueType": true,
-        "help": "Enter your Voyantis API key",
-        "valueValidators": [
-          {
-            "type": "NON_EMPTY"
-          },
-          {
-            "type": "REGEX",
-            "args": [
-              "^[A-Za-z0-9_-]+$"
-            ]
-          }
-        ],
-        "enablingConditions": [
-          {
-            "paramName": "tagType",
-            "type": "EQUALS",
-            "paramValue": "init"
-          }
-        ]
+        "value": "production",
+        "displayValue": "Production"
       },
       {
-        "type": "SELECT",
-        "name": "environment",
-        "displayName": "Environment",
-        "simpleValueType": true,
-        "help": "Select the environment for your SDK deployment",
-        "selectItems": [
+        "value": "staging",
+        "displayValue": "Staging"
+      }
+    ],
+    "defaultValue": "production"
+  },
+  {
+    "type": "CHECKBOX",
+    "name": "hasUserId",
+    "simpleValueType": true,
+    "defaultValue": false,
+    "checkboxText": "I have user Id var",
+    "subParams": [
+      {
+        "type": "GROUP",
+        "name": "userIdGroup",
+        "displayName": "",
+        "subParams": [
           {
-            "value": "production",
-            "displayValue": "Production"
-          },
-          {
-            "value": "staging",
-            "displayValue": "Staging"
-          }
-        ],
-        "defaultValue": "production",
-        "enablingConditions": [
-          {
-            "paramName": "tagType",
-            "type": "EQUALS",
-            "paramValue": "init"
+            "type": "SELECT",
+            "name": "userId",
+            "displayName": "User ID Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user ID (e.g., a logged-in user\u0027s ID).",
+            "macrosInSelect": true,
+            "notSetText": "Select a user ID variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasUserId",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
           }
         ]
       }
-    ],
-    "enablingConditions": [
+    ]
+  },
+  {
+    "type": "CHECKBOX",
+    "name": "hasEmail",
+    "simpleValueType": true,
+    "defaultValue": false,
+    "checkboxText": "I have email var",
+    "subParams": [
       {
-        "paramName": "tagType",
-        "type": "EQUALS",
-        "paramValue": "init"
+        "type": "GROUP",
+        "name": "emailGroup",
+        "displayName": "",
+        "subParams": [
+          {
+            "type": "SELECT",
+            "name": "email",
+            "displayName": "Email Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user\u0027s plain (non-hashed) email address.",
+            "macrosInSelect": true,
+            "notSetText": "Select an email variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasEmail",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
+          },
+          {
+            "type": "SELECT",
+            "name": "googleHashedEmail",
+            "displayName": "Hashed Google Email Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user\u0027s email address already hashed according to Google\u0027s requirements (SHA-256).",
+            "macrosInSelect": true,
+            "notSetText": "Select a Google-hashed email variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasEmail",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
+          },
+          {
+            "type": "SELECT",
+            "name": "metaHashedEmail",
+            "displayName": "Hashed Pixel Email Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user\u0027s email address already hashed according to Meta\u0027s requirements (SHA-256).",
+            "macrosInSelect": true,
+            "notSetText": "Select a Meta-hashed email variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasEmail",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "CHECKBOX",
+    "name": "hasPhone",
+    "simpleValueType": true,
+    "defaultValue": false,
+    "checkboxText": "I have phone var",
+    "subParams": [
+      {
+        "type": "GROUP",
+        "name": "phoneGroup",
+        "displayName": "",
+        "subParams": [
+          {
+            "type": "SELECT",
+            "name": "phone",
+            "displayName": "Phone Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user\u0027s plain (non-hashed) phone number.",
+            "macrosInSelect": true,
+            "notSetText": "Select a phone variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasPhone",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
+          },
+          {
+            "type": "SELECT",
+            "name": "googleHashedPhone",
+            "displayName": "Hashed Google Phone Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user\u0027s phone number already hashed according to Google\u0027s requirements (SHA-256).",
+            "macrosInSelect": true,
+            "notSetText": "Select a Google-hashed phone variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasPhone",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
+          },
+          {
+            "type": "SELECT",
+            "name": "metaHashedPhone",
+            "displayName": "Hashed Pixel Phone Variable",
+            "simpleValueType": true,
+            "help": "Select the GTM variable that contains the user\u0027s phone number already hashed according to Meta\u0027s requirements (SHA-256).",
+            "macrosInSelect": true,
+            "notSetText": "Select a Meta-hashed phone variable",
+            "selectItems": [],
+            "enablingConditions": [
+              {
+                "paramName": "hasPhone",
+                "type": "EQUALS",
+                "paramValue": true
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   {
     "type": "GROUP",
-    "name": "identifyGroup",
-    "displayName": "Identify Configuration",
+    "name": "analyticsSystemGroup",
+    "displayName": "Analytics system",
     "subParams": [
       {
         "type": "CHECKBOX",
-        "name": "hasUserId",
+        "name": "hasAmplitude",
         "simpleValueType": true,
         "defaultValue": false,
-        "checkboxText": "I have user Id var",
+        "checkboxText": "Amplitude",
         "subParams": [
           {
             "type": "GROUP",
-            "name": "userIdGroup",
+            "name": "amplitudeGroup",
             "displayName": "",
             "subParams": [
               {
                 "type": "SELECT",
-                "name": "userId",
-                "displayName": "User ID Variable",
+                "name": "amplitudeId",
+                "displayName": "Amplitude ID variable",
                 "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user ID (e.g., a logged-in user\u0027s ID).",
+                "help": "Select a GTM variable that returns the Amplitude user ID. If left blank, the tag will use the default fallback function to collect the Amplitude user ID automatically.",
                 "macrosInSelect": true,
-                "notSetText": "Select a user ID variable",
+                "notSetText": "Use default fallback",
                 "selectItems": [],
                 "enablingConditions": [
                   {
-                    "paramName": "hasUserId",
+                    "paramName": "hasAmplitude",
                     "type": "EQUALS",
                     "paramValue": true
                   }
@@ -149,62 +262,28 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "CHECKBOX",
-        "name": "hasEmail",
+        "name": "hasMixpanel",
         "simpleValueType": true,
         "defaultValue": false,
-        "checkboxText": "I have email var",
+        "checkboxText": "Mixpanel",
         "subParams": [
           {
             "type": "GROUP",
-            "name": "emailGroup",
+            "name": "mixpanelGroup",
             "displayName": "",
             "subParams": [
               {
                 "type": "SELECT",
-                "name": "email",
-                "displayName": "Email Variable",
+                "name": "mixpanelId",
+                "displayName": "Mixpanel ID variable",
                 "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user\u0027s plain (non-hashed) email address.",
+                "help": "Select a GTM variable that returns the Mixpanel user ID. If left blank, the tag will use the default fallback function to collect the Mixpanel user ID automatically.",
                 "macrosInSelect": true,
-                "notSetText": "Select an email variable",
+                "notSetText": "Use default fallback",
                 "selectItems": [],
                 "enablingConditions": [
                   {
-                    "paramName": "hasEmail",
-                    "type": "EQUALS",
-                    "paramValue": true
-                  }
-                ]
-              },
-              {
-                "type": "SELECT",
-                "name": "googleHashedEmail",
-                "displayName": "Hashed Google Email Variable",
-                "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user\u0027s email address already hashed according to Google\u0027s requirements (SHA-256).",
-                "macrosInSelect": true,
-                "notSetText": "Select a Google-hashed email variable",
-                "selectItems": [],
-                "enablingConditions": [
-                  {
-                    "paramName": "hasEmail",
-                    "type": "EQUALS",
-                    "paramValue": true
-                  }
-                ]
-              },
-              {
-                "type": "SELECT",
-                "name": "metaHashedEmail",
-                "displayName": "Hashed Pixel Email Variable",
-                "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user\u0027s email address already hashed according to Meta\u0027s requirements (SHA-256).",
-                "macrosInSelect": true,
-                "notSetText": "Select a Meta-hashed email variable",
-                "selectItems": [],
-                "enablingConditions": [
-                  {
-                    "paramName": "hasEmail",
+                    "paramName": "hasMixpanel",
                     "type": "EQUALS",
                     "paramValue": true
                   }
@@ -216,62 +295,28 @@ ___TEMPLATE_PARAMETERS___
       },
       {
         "type": "CHECKBOX",
-        "name": "hasPhone",
+        "name": "hasSegment",
         "simpleValueType": true,
         "defaultValue": false,
-        "checkboxText": "I have phone var",
+        "checkboxText": "Segment",
         "subParams": [
           {
             "type": "GROUP",
-            "name": "phoneGroup",
+            "name": "segmentGroup",
             "displayName": "",
             "subParams": [
               {
                 "type": "SELECT",
-                "name": "phone",
-                "displayName": "Phone Variable",
+                "name": "segmentId",
+                "displayName": "Segment ID variable",
                 "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user\u0027s plain (non-hashed) phone number.",
+                "help": "Select a GTM variable that returns the Segment user ID. If left blank, the tag will use the default fallback function to collect the Segment user ID automatically.",
                 "macrosInSelect": true,
-                "notSetText": "Select a phone variable",
+                "notSetText": "Use default fallback",
                 "selectItems": [],
                 "enablingConditions": [
                   {
-                    "paramName": "hasPhone",
-                    "type": "EQUALS",
-                    "paramValue": true
-                  }
-                ]
-              },
-              {
-                "type": "SELECT",
-                "name": "googleHashedPhone",
-                "displayName": "Hashed Google Phone Variable",
-                "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user\u0027s phone number already hashed according to Google\u0027s requirements (SHA-256).",
-                "macrosInSelect": true,
-                "notSetText": "Select a Google-hashed phone variable",
-                "selectItems": [],
-                "enablingConditions": [
-                  {
-                    "paramName": "hasPhone",
-                    "type": "EQUALS",
-                    "paramValue": true
-                  }
-                ]
-              },
-              {
-                "type": "SELECT",
-                "name": "metaHashedPhone",
-                "displayName": "Hashed Pixel Phone Variable",
-                "simpleValueType": true,
-                "help": "Select the GTM variable that contains the user\u0027s phone number already hashed according to Meta\u0027s requirements (SHA-256).",
-                "macrosInSelect": true,
-                "notSetText": "Select a Meta-hashed phone variable",
-                "selectItems": [],
-                "enablingConditions": [
-                  {
-                    "paramName": "hasPhone",
+                    "paramName": "hasSegment",
                     "type": "EQUALS",
                     "paramValue": true
                   }
@@ -280,119 +325,6 @@ ___TEMPLATE_PARAMETERS___
             ]
           }
         ]
-      },
-      {
-        "type": "GROUP",
-        "name": "analyticsSystemGroup",
-        "displayName": "Analytics system",
-        "subParams": [
-          {
-            "type": "CHECKBOX",
-            "name": "hasAmplitude",
-            "simpleValueType": true,
-            "defaultValue": false,
-            "checkboxText": "Amplitude",
-            "subParams": [
-              {
-                "type": "GROUP",
-                "name": "amplitudeGroup",
-                "displayName": "",
-                "subParams": [
-                  {
-                    "type": "SELECT",
-                    "name": "amplitudeId",
-                    "displayName": "Amplitude ID variable",
-                    "simpleValueType": true,
-                    "help": "Select a GTM variable that returns the Amplitude user ID. If left blank, the tag will use the default fallback function to collect the Amplitude user ID automatically.",
-                    "macrosInSelect": true,
-                    "notSetText": "Use default fallback",
-                    "selectItems": [],
-                    "enablingConditions": [
-                      {
-                        "paramName": "hasAmplitude",
-                        "type": "EQUALS",
-                        "paramValue": true
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "CHECKBOX",
-            "name": "hasMixpanel",
-            "simpleValueType": true,
-            "defaultValue": false,
-            "checkboxText": "Mixpanel",
-            "subParams": [
-              {
-                "type": "GROUP",
-                "name": "mixpanelGroup",
-                "displayName": "",
-                "subParams": [
-                  {
-                    "type": "SELECT",
-                    "name": "mixpanelId",
-                    "displayName": "Mixpanel ID variable",
-                    "simpleValueType": true,
-                    "help": "Select a GTM variable that returns the Mixpanel user ID. If left blank, the tag will use the default fallback function to collect the Mixpanel user ID automatically.",
-                    "macrosInSelect": true,
-                    "notSetText": "Use default fallback",
-                    "selectItems": [],
-                    "enablingConditions": [
-                      {
-                        "paramName": "hasMixpanel",
-                        "type": "EQUALS",
-                        "paramValue": true
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "CHECKBOX",
-            "name": "hasSegment",
-            "simpleValueType": true,
-            "defaultValue": false,
-            "checkboxText": "Segment",
-            "subParams": [
-              {
-                "type": "GROUP",
-                "name": "segmentGroup",
-                "displayName": "",
-                "subParams": [
-                  {
-                    "type": "SELECT",
-                    "name": "segmentId",
-                    "displayName": "Segment ID variable",
-                    "simpleValueType": true,
-                    "help": "Select a GTM variable that returns the Segment user ID. If left blank, the tag will use the default fallback function to collect the Segment user ID automatically.",
-                    "macrosInSelect": true,
-                    "notSetText": "Use default fallback",
-                    "selectItems": [],
-                    "enablingConditions": [
-                      {
-                        "paramName": "hasSegment",
-                        "type": "EQUALS",
-                        "paramValue": true
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "enablingConditions": [
-      {
-        "paramName": "tagType",
-        "type": "EQUALS",
-        "paramValue": "identify"
       }
     ]
   }
@@ -406,16 +338,34 @@ const log              = require('logToConsole');
 const copyFromWindow = require('copyFromWindow');
 
 const SDK_NAMESPACE = 'VoyantisSDK';
+const apiKey      = data.apiKey;
+const environment = data.environment;
 
+// Validate required inputs
+if (!apiKey) {
+  log('Voyantis GTM: apiKey is required');
+  if (data.gtmOnFailure) data.gtmOnFailure();
+  return;
+}
+
+// ============================================================================
+// FUNCTIONS
+// ============================================================================
 function debug(message) {
     if (environment === 'staging') {
         log('Voyantis GTM: ' + message);
     }
 }
 
-// ---- Shared configuration ----
-const apiKey      = data.apiKey;
-const environment = data.environment;
+function getSdkUrl(apiKey, environment) {
+    var baseUrl = 'https://sdk.voyantis.io';
+    var path = '/' + apiKey + '/vy-cs-sdk.min.js';
+    
+    if (environment === 'staging') {
+      return baseUrl + '/staging' + path;
+    }
+    return baseUrl + path;
+}
 
 function isDefined(value) {
   return value !== undefined && value !== null && value !== '';
@@ -426,6 +376,7 @@ function addIfDefined(obj, key, value) {
 }
 
 function hasProperties(obj) {
+  if (!obj) return false;
   for (var key in obj) {
     return true;
   }
@@ -465,12 +416,12 @@ function buildUserData(data) {
 
 function identifyUser(VoyantisSDK, currentData) {
   if (!VoyantisSDK) {
-    debug('Voyantis SDK not found. Make sure SDK is loaded first.');
+    debug('SDK not found. Ensure SDK is loaded before identifying user.');
     return false;
   }
 
   if (typeof VoyantisSDK.identify !== 'function') {
-    debug('Voyantis SDK identify function not available');
+    debug('SDK identify function not available. SDK may not be fully initialized.');
     return false;
   }
 
@@ -484,66 +435,62 @@ function identifyUser(VoyantisSDK, currentData) {
     VoyantisSDK.identify(userId, userData);
 
     if (userId) {
-      debug('User identified with userId: ' + userId);
+      debug('User identified successfully with userId: ' + userId);
     } else {
-      debug('User identified without userId');
+      debug('User identified successfully with user data only');
     }
     return true;
   }
 
-  debug('User not identified');
-  log('Voyantis GTM ###: ', currentData);
+  debug('User not identified: no userId or user data provided');
 
   return false;
 }
 
-// ---- Check if SDK is already loaded ----
+// ============================================================================
+// MAIN EXECUTION
+// ============================================================================
 var VoyantisSDK = copyFromWindow(SDK_NAMESPACE);
 var sdkLoaded = VoyantisSDK && typeof VoyantisSDK.init === 'function';
 
 if (!sdkLoaded) {
-  // ---- Load and initialize SDK ----
-  // ---- Build SDK URL (ES5) ----
-  var sdkUrl;
-  if (environment === 'staging') {
-    sdkUrl = 'https://sdk.voyantis.io/staging/' + apiKey + '/vy-cs-sdk.min.js';
-  } else {
-    sdkUrl = 'https://sdk.voyantis.io/' + apiKey + '/vy-cs-sdk.min.js';
-  }
+  var sdkUrl = getSdkUrl(apiKey, environment);
 
-  // ---- SDK load callbacks ----
-  // Capture current data at the time of tag execution to preserve trigger values
-  var currentData = data;
-  
+  // SDK load callbacks
   var onSuccess = function () {
-    debug('script loaded, initializing...');
+    debug('SDK script loaded, initializing...');
 
-    var VoyantisSDK = copyFromWindow(SDK_NAMESPACE);
+    var loadedSDK = copyFromWindow(SDK_NAMESPACE);
 
-    if (VoyantisSDK && typeof VoyantisSDK.init === 'function') {
-      VoyantisSDK.init({}, 1, apiKey, environment);
-      debug('initialized successfully');
-
-      if (currentData.gtmOnSuccess) currentData.gtmOnSuccess();
+    if (loadedSDK && typeof loadedSDK.init === 'function') {
+      loadedSDK.init({}, 1, apiKey, environment);
+      debug('SDK initialized successfully');
+      
+      identifyUser(loadedSDK, data);
+      if (data.gtmOnSuccess) data.gtmOnSuccess();
     } else {
-      debug('not found or invalid');
-      if (currentData.gtmOnFailure) currentData.gtmOnFailure();
+      debug('SDK not found or invalid after script load');
+      if (data.gtmOnFailure) data.gtmOnFailure();
     }
   };
   
   var onFailure = function () {
-    log('failed to load VoyantisSDK script');
-    if (currentData.gtmOnFailure) { currentData.gtmOnFailure(); }
+    debug('Failed to load SDK script from URL: ' + sdkUrl);
+    if (data.gtmOnFailure) data.gtmOnFailure();
   };
 
-  // ---- Load SDK ----
+  // Load SDK script
   injectScript(sdkUrl, onSuccess, onFailure);
 } else {
-  debug('Voyantis GTM: SDK already loaded, just identify user');
-  log('Voyantis GTM 123: ', data);
-  // SDK already loaded, just identify user with current trigger's data
-  identifyUser(VoyantisSDK, data);
-  if (data.gtmOnSuccess) data.gtmOnSuccess();
+  debug('SDK already loaded, proceeding with user identification');
+
+  if (VoyantisSDK && typeof VoyantisSDK.identify === 'function') {
+    identifyUser(VoyantisSDK, data);
+    if (data.gtmOnSuccess) data.gtmOnSuccess();
+  } else {
+    debug('SDK identify function not available. SDK may not be fully initialized.');
+    if (data.gtmOnFailure) data.gtmOnFailure();
+  }
 }
 
 

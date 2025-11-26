@@ -17,6 +17,11 @@ ___INFO___
   "categories": [
     "ANALYTICS"
   ],
+  "brand": {
+    "id": "voyantis",
+    "displayName": "Voyantis",
+    "thumbnail": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAY1BMVEVHcEzt7e3o6Or39/jr6+vn5+mzs7T09PSWlpaDg4L39/e5ubbn5+rs7Oz4+P33///8/P//AEb29vz+N2b5x9T6sMD65+3iWHjWAEX9UHbKyswAAACusLX8epP6lKj8kKfUH1xBsqwmAAAADnRSTlMAkdHbkdIdpR0d3B3RkS6uU8AAAACdSURBVBiVZU9bEoIwDAzawqCSV1vAt/c/pVsqX2YynWyy2WyJEOdwYI7dSL8Y1NmROjR88hasftzmO/abOjijViDi+rira09Txby8hfOMMlCEni4fY7GnOF8IWPKakmQr9RYacrWUZrxStwmW5mUVEF5ocKSAlWKlWKoE76jHWUlmiaHgOjZjkvM292G3zptgs/7/OdifIvMh9LX+AiK8DV5L7Z+LAAAAAElFTkSuQmCC"
+  },
   "description": "The Voyantis Tag enables predictive signal optimization by securely fetching key identifiers to measure and improve signal health, ensuring accurate matching and stronger ad performance.",
   "containerContexts": [
     "WEB"
